@@ -1,7 +1,7 @@
 # Laravel Doctor
 
 <p align="center">
-  <a href="https://rdhafiz.github.io/laravel-doctor/"><img src="marketing/og/og-cover.png" alt="Laravel Doctor" width="1200"></a>
+  <a href="https://rdhafiz.github.io/laravel-doctor/"><img src="marketing/og-cover.png" alt="Laravel Doctor" width="1200"></a>
 </p>
 
 Instantly diagnose configuration, performance and production safety issues in your Laravel application.
