@@ -1,6 +1,12 @@
 # Laravel Doctor
 
+<p align="center">
+  <a href="https://rdhafiz.github.io/laravel-doctor/"><img src="marketing/og-cover.png" alt="Laravel Doctor" width="1200"></a>
+</p>
+
 Instantly diagnose configuration, performance and production safety issues in your Laravel application.
+
+📄 **[View the landing page →](https://rdhafiz.github.io/laravel-doctor/)**
 
 [![Tests](https://github.com/rdhafiz/laravel-doctor/actions/workflows/tests.yml/badge.svg)](https://github.com/rdhafiz/laravel-doctor/actions/workflows/tests.yml)
 [![Latest Version](https://img.shields.io/packagist/v/codevioso/laravel-doctor.svg)](https://packagist.org/packages/codevioso/laravel-doctor)

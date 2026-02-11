@@ -27,17 +27,31 @@ class DoctorCheckCommand extends Command
 
         if ($this->option('demo')) {
             $grouped = [
-                'errors' => [CheckResult::error('APP_DEBUG is enabled in production. Set APP_DEBUG=false.')],
-                'warnings' => [CheckResult::warning('Cache driver is file in production. Use redis/memcached/database for better performance.')],
-                'suggestions' => [],
+                'errors' => [
+                    CheckResult::error('APP_DEBUG is enabled in production. Set APP_DEBUG=false.'),
+                    CheckResult::error('Storage symlink does not exist. Run: php artisan storage:link'),
+                ],
+                'warnings' => [
+                    CheckResult::warning('Cache driver is file in production. Use redis/memcached/database for better performance.'),
+                    CheckResult::warning('Config is not cached. Run: php artisan config:cache'),
+                    CheckResult::warning('Session driver is file in production. Consider redis/database for scalability.'),
+                ],
+                'suggestions' => [
+                    CheckResult::suggestion('Cannot verify queue worker process from PHP. Ensure a supervisor/systemd process runs: php artisan queue:work'),
+                    CheckResult::suggestion('Composer autoload could be optimized. Run: composer install --optimize-autoloader --no-dev'),
+                ],
                 'passed' => [
                     CheckResult::passed('APP_ENV matches the environment.'),
-                    CheckResult::passed('Config cache exists.'),
+                    CheckResult::passed('Route cache not required for this environment.'),
+                    CheckResult::passed('View cache not required for this environment.'),
+                    CheckResult::passed('Queue driver is not sync in production.'),
+                    CheckResult::passed('Log channel is appropriate for environment.'),
+                    CheckResult::passed('All required PHP extensions are available.'),
                     CheckResult::passed('Storage and bootstrap/cache directories are writable.'),
                 ],
             ];
             $io = new SymfonyStyle($this->input, $this->output);
-            $reporter->render($io, $grouped, 12);
+            $reporter->render($io, $grouped, 45);
             return self::SUCCESS;
         }
 
